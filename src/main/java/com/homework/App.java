@@ -18,5 +18,9 @@ public class App
         MessageService myMsg = context.getBean("messageService", MessageService.class);
         myMsg.printMessage();
         
+        EmailService emailService = context.getBean("emailService", EmailService.class);
+        NotificationService notificationService = context.getBean("notificationService", NotificationService.class);
+        //use the bean
+        notificationService.sendNotification();
     }
 }

@@ -9,7 +9,9 @@
     <bean id="messageService" class="com.homework.MessageService">
         <property name="message" value = "Hello from Spring Setter Injection"/>
     </bean>
-    
+    <bean id="emailService" class="com.homework.EmailService"/>
+        <constructor-arg ref="emailService" />
+    </bean>
         
 
 
