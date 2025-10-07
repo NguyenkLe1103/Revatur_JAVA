@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Implementations of PaymentGateway -->
+    <bean id="creditCardGateway" class="com.payment.CreditCard"/>
+    <bean id="paypalGateway"     class="com.payment.PayPal"/>
+
+    <!-- Choose ONE active gateway by alias -->
+    <alias name="creditCardGateway" alias="activeGateway"/>
+    <!-- To switch to PayPal, comment the line above and uncomment the line below -->
+    <!-- <alias name="paypalGateway" alias="activeGateway"/> -->
+
+    <!-- Service wired to the alias -->
+    <bean id="checkoutService" class="com.payment.CheckoutService">
+        <property name="gateway" ref="activeGateway"/>
+    </bean>
+</beans>
