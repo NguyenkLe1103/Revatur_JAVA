@@ -1,0 +1,18 @@
+server:
+  port: 9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: boot-actuator-devtools-demo
+    version: "0.0.1"
+  owner: demo-team
