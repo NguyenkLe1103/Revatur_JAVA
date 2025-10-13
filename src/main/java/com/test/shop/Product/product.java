@@ -5,10 +5,16 @@ import java.math.BigDecimal;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 
+@Builder
 @Entity    // This tells Hibernate to make a table out of this class
 @Table(name="product") // this is to specify the table name
-public class product {
+
+public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -20,7 +26,7 @@ public class product {
     private String description;
 
     @Column(name="price")
-    private Integer price;
+    private BigDecimal price;
 
     @Column(name="quantity")
     private Integer quantity;
@@ -53,11 +59,11 @@ public class product {
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -70,12 +76,11 @@ public class product {
     }
 
     public void setCategory(Category cat) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'setCategory'");
     }
 
-    public void setPrice(BigDecimal price2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPrice'");
-    }
+  
+
+   
 }

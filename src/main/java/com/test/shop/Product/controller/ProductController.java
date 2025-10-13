@@ -5,7 +5,7 @@ import com.test.shop.Product.Service.ProductService;
 import jakarta.validation.Valid;
 
 import com.test.shop.Product.Request.ProductRequest;
-import com.test.shop.Product.product;
+import com.test.shop.Product.Product;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -33,27 +33,27 @@ public class ProductController {
 
     // List all or by category
     @GetMapping
-    public List<product> list(@RequestParam(required = false) Integer categoryId) {
+    public List<Product> list(@RequestParam(required = false) Integer categoryId) {
         return (categoryId == null)
                 ? productService.listAll()
                 : productService.listByCategory(categoryId);
     }
 
     @GetMapping("/{id}")
-    public product get(@PathVariable int id) {
+    public Product get(@PathVariable int id) {
         return productService.getOrThrow(id);
     }
 
     @PostMapping
-    public ResponseEntity<product> create(@Valid @RequestBody ProductRequest req) {
-        product created = productService.create(req);
+    public ResponseEntity<Product> create(@Valid @RequestBody ProductRequest req) {
+        Product created = productService.create(req);
         return ResponseEntity
                 .created(URI.create("/api/products/" + created.getId()))
                 .body(created);
     }
 
     @PutMapping("/{id}")
-    public product update(@PathVariable int id, @Valid @RequestBody ProductRequest req) {
+    public Product update(@PathVariable int id, @Valid @RequestBody ProductRequest req) {
         return productService.update(id, req);
     }
 

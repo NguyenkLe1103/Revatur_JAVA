@@ -4,15 +4,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com. test.shop.Product.product;
+import com. test.shop.Product.Product;
 @Repository
-public interface ProductRepository extends JpaRepository<product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
     
     
-    List<product> findByName(String name);
-    List<product> findByPriceLessThanEqual(Integer price);
-    List<product> findByQuantityGreaterThanEqual(Integer quantity);
-    List<product> findByCategoryId(Integer categoryId);
-    List<product> findByNameContainingIgnoreCase(String name);
+    List<Product> findByName(String name);
+    List<Product> findByPriceLessThanEqual(Integer price);
+    List<Product> findByQuantityGreaterThanEqual(Integer quantity);
+    List<Product> findByCategoryId(Integer categoryId);
+    List<Product> findByNameContainingIgnoreCase(String name);
 }
 
